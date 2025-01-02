@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.wx001.mapper.AccountMapper">
+    <!--id=方法名，resultType=方法的返回值类型的完整包路径-->
+    <select id="login" resultType="com.example.wx001.domain.Account">
+        select accid,accname,accpass,accstate
+        from account
+        where accname = #{accname} and accpass = #{accpass} and accstate = '1'
+    </select>
+    <select id="queryAccounts" resultType="com.example.wx001.domain.Account">
+        select accid,accname,accpass,accstate
+        from account
+    </select>
+    <insert id="saveAccount">
+        insert into account(accname,accpass,accstate)
+        values(#{accname},#{accpass},'1')
+    </insert>
+    <select id="queryByAccname" resultType="int">
+        select count(*)
+        from account
+        where accname = #{accname}
+    </select>
+
+    <select id="queryByAccname02" resultType="int">
+        select count(*)
+        from account
+        where accname = #{accname} and accid != #{accid}
+    </select>
+
+    <delete id="deleteAccounts" >
+        delete from account
+        where accid = #{accid}
+    </delete>
+    <select id="queryById" resultType="com.example.wx001.domain.Account">
+        select accid,accname,accpass,accstate
+        from account
+        where accid = #{accid}
+    </select>
+    <update id="abc">
+        update account
+        set accname = #{accname},accpass = #{accpass},accstate = #{accstate}
+        where accid = #{accid}
+    </update>
+    <update id="changeState">
+        update account
+        set accstate = #{accstate}
+        where accid =  #{accid}
+    </update>
+</mapper>

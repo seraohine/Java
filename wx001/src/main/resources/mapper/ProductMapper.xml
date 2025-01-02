@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.wx001.mapper.ProductMapper">
+    <select id="queryProducts" resultType="com.example.wx001.domain.Product">
+        select p.id,c.com_name,p.pname,p.unit,p.weight,p.volume
+        from company c , product p
+        where c.id = p.company_id
+        <if test = "pname != null and pname != ''">
+            and p.pname like '${pname}'
+        </if>
+        <if test = "unit != null and unit != ''">
+            and p.unit like '${unit}'
+        </if>
+        <if test = "companyId != null and companyId != ''">
+            and p.company_Id = #{companyId}
+        </if>
+    </select>
+    <insert id="saveProduct">
+        insert into product(company_id,pname,unit,weight,volume)
+        values(#{companyId},#{pname},#{unit},#{weight},#{volume})
+    </insert>
+    <select id="checkPname" resultType="int">
+        select count(*)
+        from product
+        where pname = #{pname} and company_id = #{companyId}
+    </select>
+    <select id="queryById" resultType="com.example.wx001.domain.Product">
+        select id,company_id,pname,unit,weight,volume
+        from product
+        where id = #{id}
+    </select>
+    <update id="updateProduct">
+        update product
+        set pname = #{pname},unit = #{unit},weight = #{weight},volume = #{volume}
+        where id = #{id}
+    </update>
+    <select id="checkPname2" resultType="int">
+        select count(*)
+        from product
+        where pname = #{pname} and company_id = #{companyId} and id != #{id}
+    </select>
+    <delete id="deleteProduct">
+        delete from product
+        where id = #{id}
+    </delete>
+</mapper>
