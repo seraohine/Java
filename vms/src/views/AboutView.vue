@@ -1,7 +1,25 @@
+<script setup>
+import {useRouter} from "vue-router";
+import { ref } from 'vue'
+const router = useRouter();
+const accname = ref("");
+accname.value = window.localStorage.getItem("accname");
+if(accname.value==undefined || accname.value ==""){
+  router.push("/");
+}
+function logout(){
+  accname.value = "";
+  window.localStorage.clear();
+  router.push("/");
+}
+</script>
+
+
+
 <template>
   <div class="common-layout">
     <el-container>
-      <el-header>智能仓储管理平台</el-header>
+      <el-header>智能仓储管理平台,欢迎你，{{accname}}<button @click="logout">退出</button></el-header>
       <el-container>
         <el-aside width="200px">
           <el-menu default-active="2" class="el-menu-vertical-demo" router>
@@ -31,6 +49,16 @@
               </template>
               <el-menu-item index="/good">商品管理</el-menu-item>
               <el-menu-item index="1-1">仓库管理</el-menu-item>
+            </el-sub-menu>
+            <el-sub-menu index="3">
+              <template #title>
+                <el-icon>
+                  <location />
+                </el-icon>
+                <span>公司管理</span>
+              </template>
+              <el-menu-item index="/good">信息管理</el-menu-item>
+              <el-menu-item index="1-1">人员管理</el-menu-item>
             </el-sub-menu>
             <!-- <el-menu-item index="3" disabled>
           <el-icon><document /></el-icon>
