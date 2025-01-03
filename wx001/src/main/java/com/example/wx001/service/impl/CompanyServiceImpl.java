@@ -17,4 +17,24 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Company> queryCompanys() {
         return companyMapper.queryCompanys();
     }
+
+    @Override
+    public void saveCompany(Company company) {
+        companyMapper.saveCompany(company);
+    }
+
+    @Override
+    public void deleteCompany(Integer id) {
+        companyMapper.deleteCompany(id);
+    }
+
+    @Override
+    public Company queryById(Integer id) {
+        return  companyMapper.queryById(id);
+    }
+
+    @Override
+    public void updateCompany(Company company) {
+        companyMapper.updateCompany(company);
+    }
 }

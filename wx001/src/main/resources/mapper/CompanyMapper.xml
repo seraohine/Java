@@ -4,7 +4,25 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.wx001.mapper.CompanyMapper">
     <select id="queryCompanys" resultType="com.example.wx001.domain.Company">
-        select id,com_name
-        from company
+        SELECT *
+        FROM company
     </select>
+    <insert id="saveCompany">
+        INSERT INTO company (com_name, com_address, com_tel)
+        VALUES (#{comName}, #{comAddress}, #{comTel})
+    </insert>
+    <delete id="deleteCompany" >
+        DELETE FROM company
+        WHERE id = #{id}
+    </delete>
+    <select id="queryById" resultType="com.example.wx001.domain.Company">
+        SELECT *
+        FROM company
+        WHERE id = #{id}
+    </select>
+    <update id="updateCompany">
+        UPDATE company
+        SET com_name = #{comName}, com_address = #{comAddress}, com_tel = #{comTel}
+        WHERE id = #{id}
+    </update>
 </mapper>

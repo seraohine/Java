@@ -9,4 +9,12 @@ import java.util.List;
 public interface CompanyMapper {
 
     List<Company> queryCompanys();
+
+    void saveCompany(Company company);
+
+    void deleteCompany(Integer id);
+
+    Company queryById(Integer id);
+
+    void updateCompany(Company company);
 }

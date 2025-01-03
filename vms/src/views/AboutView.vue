@@ -28,10 +28,10 @@ function logout(){
                 <el-icon>
                   <location />
                 </el-icon>
-                <span>客资管理</span>
+                <span>系统管理</span>
               </template>
-              <el-menu-item index="/customer">客户信息管理</el-menu-item>
-              <el-menu-item index="">地址管理</el-menu-item>
+              <el-menu-item index="/customer">用户信息管理</el-menu-item>
+              <el-menu-item index="/Company">客户公司管理</el-menu-item>
               <!-- <el-sub-menu index="1-4">
             <template #title>
               item four
@@ -49,16 +49,6 @@ function logout(){
               </template>
               <el-menu-item index="/good">商品管理</el-menu-item>
               <el-menu-item index="1-1">仓库管理</el-menu-item>
-            </el-sub-menu>
-            <el-sub-menu index="3">
-              <template #title>
-                <el-icon>
-                  <location />
-                </el-icon>
-                <span>公司管理</span>
-              </template>
-              <el-menu-item index="/good">信息管理</el-menu-item>
-              <el-menu-item index="1-1">人员管理</el-menu-item>
             </el-sub-menu>
             <!-- <el-menu-item index="3" disabled>
           <el-icon><document /></el-icon>

@@ -74,7 +74,7 @@ import SupportIcon from './icons/IconSupport.vue'
     <a href="https://news.vuejs.org" target="_blank" rel="noopener">our mailing list</a>
     and follow the official
     <a href="https://twitter.com/vuejs" target="_blank" rel="noopener">@vuejs</a>
-    twitter account for latest news in the Vue world.
+    twitter company for latest news in the Vue world.
   </WelcomeItem>
 
   <WelcomeItem>

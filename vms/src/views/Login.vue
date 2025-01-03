@@ -102,10 +102,10 @@ const onSubmit = () => {
 .background {
   width: 100%;
   height: 100%;
-  position: fixed; 
+  position: fixed; /* 背景固定 */
   top: 0;
   left: 0;
-  background: url('/images/miside.jpg') no-repeat; 
+  background: url('/images/miside.jpg') no-repeat; /* 背景图片路径 */
   background-size: cover; /* 背景图片覆盖 */
   background-position: center; /* 居中显示 */
   z-index: -1; /* 确保背景层在表单之下 */

@@ -10,7 +10,7 @@ const  loginFormRef = ref(null);
 
 const loginRules = ref({
   accname: [
-    { required: true, message: "please enter your account", trigger: 'blur' }
+    { required: true, message: "please enter your name", trigger: 'blur' }
   ],
   accpass: [
     { required: true, message: "please enter your password", trigger: 'blur' }
@@ -28,9 +28,9 @@ const form = ref({
   accstate: undefined,
 });
 
-queryAccount();
+queryAccounts();
 
-function queryAccount() {
+function queryAccounts() {
   // axios.get('http://60.205.214.35:8080/account/queryAccounts').then(res => {
   axios.get('http://127.0.0.1:8080/account/queryAccounts').then(res => {
     tableData.value = res.data.data;
@@ -49,7 +49,7 @@ function handleChangeState(accid,accstate){
             message:message,
             type:"success",
           });
-          queryAccount();
+          queryAccounts();
         }else{
           ElMessage.error(response.data.message);
         }
@@ -67,7 +67,7 @@ function handleDelete(accid) {
       .then((res) => {
         if (res.data.code == 1000) {
           ElMessage.success('删除成功');
-          this.queryAccount();
+          this.queryAccounts();
         } else {
           ElMessage.error('删除失败');
         }
@@ -91,7 +91,7 @@ function modifyAccount() {
         .then((res) => {
           if (res.data.code == 1000) {
             ElMessage.success('添加成功');
-            queryAccount();
+            queryAccounts();
             dialogFormVisible.value = false;
           } else {
             ElMessage.error(res.data.message);
@@ -104,7 +104,7 @@ function modifyAccount() {
           if (res.data.code == 1000) {
             ElMessage.success('修改成功');
             form.value = {};
-            queryAccount();
+            queryAccounts();
             dialogFormVisible.value = false;
             title.value = '添加用户信息';
           } else {
